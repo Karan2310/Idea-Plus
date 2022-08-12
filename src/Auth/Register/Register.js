@@ -4,12 +4,12 @@ import { useForm } from '@mantine/form';
 import { NavLink } from 'react-router-dom';
 import './Register.css'
 
-const Register = ({ opened }) => {
+const Register = () => {
     const form = useForm({
         initialValues: {
             email: '',
             password: '',
-            confrimPassword: ''
+            confirmPassword: ''
         },
 
         validate: {
@@ -48,7 +48,7 @@ const Register = ({ opened }) => {
                             mt="md"
                             label="Confirm password"
                             placeholder="Confirm password"
-                            {...form.getInputProps('confrimPassword')}
+                            {...form.getInputProps('confirmPassword')}
                         />
 
                         <Group position="center" className='mt-4'>
