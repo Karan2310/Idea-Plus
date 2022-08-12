@@ -1,0 +1,36 @@
+.Register {
+    background-color: var(--primary-color);
+    width: 100%;
+    min-height: 100vh;
+}
+
+.Register .container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 500px;
+}
+
+.Register .container h3 span {
+    font-size: 1.7rem;
+    color: var(--primary-color);
+}
+
+.Register .register_link {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: rgb(0, 0, 0);
+}
+
+.Register .register_link a {
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    text-decoration: none;
+}
+
+.Register .register_link a:hover {
+    text-decoration: underline;
+}

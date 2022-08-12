@@ -1,0 +1,36 @@
+.Login {
+    background-color: var(--primary-color);
+    width: 100%;
+    min-height: 100vh;
+}
+
+.Login .container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 500px;
+}
+
+.Login .container h3 span {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.Login .register_link {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: rgb(0, 0, 0);
+}
+
+.Login .register_link a {
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    text-decoration: none;
+}
+
+.Login .register_link a:hover {
+    text-decoration: underline;
+}
