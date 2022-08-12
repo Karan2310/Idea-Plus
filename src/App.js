@@ -1,10 +1,10 @@
-import './App.css';
+import { useState } from 'react';
+import LandingPage from './LandingPage';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <><LandingPage isLoggedIn={isLoggedIn} /></>
   );
 }
 
