@@ -1,11 +1,14 @@
 import React from 'react'
 import { logout } from '../firebase';
+import Navbar from './components/Navbar/Navbar';
+import './Page.css'
 
-const Page = ({ currentUser }) => {
+const Page = ({ currentUser, handleLogin }) => {
 
     async function handleLogout() {
         try {
             await logout();
+            handleLogin();
             console.log(logout);
         }
         catch (error) {
@@ -14,10 +17,11 @@ const Page = ({ currentUser }) => {
     }
 
     return (
-        <>
+        <div className='page p-3'>
+            <Navbar currentUser={currentUser} handleLogout={handleLogout} />
             <div>{currentUser?.email}</div>
-            <button disabled={!currentUser} onClick={handleLogout}>Logout</button>
-        </>
+
+        </div>
     )
 }
 

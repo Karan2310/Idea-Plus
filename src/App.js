@@ -3,11 +3,11 @@ import LandingPage from './LandingPage';
 import { useAuth } from './firebase';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   let currentUser = useAuth();
 
   const handleLogin = () => {
-    setIsLoggedIn(true)
+    setIsLoggedIn(!isLoggedIn)
   }
 
   return (

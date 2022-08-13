@@ -7,7 +7,7 @@ const LandingPage = ({ isLoggedIn, currentUser, handleLogin }) => {
     return (
         <>
             <BrowserRouter>
-                {isLoggedIn ? <Page currentUser={currentUser} /> : <Auth currentUser={currentUser} handleLogin={handleLogin} />}
+                {isLoggedIn ? <Page currentUser={currentUser} handleLogin={handleLogin} /> : <Auth currentUser={currentUser} handleLogin={handleLogin} />}
             </BrowserRouter>
         </>
     )
