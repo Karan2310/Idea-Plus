@@ -4,7 +4,7 @@ import { useAuth } from './firebase';
 import { ModalsProvider } from '@mantine/modals';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   let currentUser = useAuth();
 
   const handleLogin = () => {
