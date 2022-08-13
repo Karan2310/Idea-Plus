@@ -1,0 +1,23 @@
+.post {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #fff;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.post:hover {
+    transform: scale(1.1);
+}
+
+.post #add-btn {
+    font-size: 2.5rem;
+    font-weight: 500;
+}

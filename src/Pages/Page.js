@@ -2,6 +2,9 @@ import React from 'react'
 import { logout } from '../firebase';
 import Navbar from './components/Navbar/Navbar';
 import './Page.css'
+import { Routes, Route } from 'react-router-dom';
+import Home from './screens/Home/Home';
+import PostIdea from './screens/PostIdea/PostIdea';
 
 const Page = ({ currentUser, handleLogin }) => {
 
@@ -17,11 +20,15 @@ const Page = ({ currentUser, handleLogin }) => {
     }
 
     return (
-        <div className='page p-3'>
-            <Navbar currentUser={currentUser} handleLogout={handleLogout} />
-            <div>{currentUser?.email}</div>
-
-        </div>
+        <>
+            <div className='page p-3'>
+                <Navbar currentUser={currentUser} handleLogout={handleLogout} />
+                <PostIdea />
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                </Routes>
+            </div>
+        </>
     )
 }
 

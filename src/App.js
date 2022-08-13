@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import LandingPage from './LandingPage';
 import { useAuth } from './firebase';
+import { ModalsProvider } from '@mantine/modals';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
   let currentUser = useAuth();
 
   const handleLogin = () => {
@@ -11,7 +12,11 @@ function App() {
   }
 
   return (
-    <><LandingPage isLoggedIn={isLoggedIn} handleLogin={handleLogin} currentUser={currentUser} /></>
+    <>
+      <ModalsProvider>
+        <LandingPage isLoggedIn={isLoggedIn} handleLogin={handleLogin} currentUser={currentUser} />
+      </ModalsProvider>
+    </>
   );
 }
 
