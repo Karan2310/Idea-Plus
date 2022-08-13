@@ -2,9 +2,10 @@ import React from 'react'
 import { TextInput, Button, Group, PasswordInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { NavLink } from 'react-router-dom';
+import { login } from '../../firebase';
 import './Login.css'
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
     const form = useForm({
         initialValues: {
             email: '',
@@ -17,6 +18,15 @@ const Login = () => {
         },
     });
 
+    async function loginBtn() {
+        try {
+            await login(form.values.email, form.values.password);
+            handleLogin();
+        } catch (error) {
+            alert(error)
+        }
+    }
+
     return (
         <div className='Login d-flex align-items-center justify-content-between p-3'>
             <p className='register_link'>New to IdeaPlus+ ?
@@ -26,7 +36,7 @@ const Login = () => {
             <div className="container">
                 <h3 className='text-center'>Welcome to Idea<span>Plus+</span></h3>
                 <div className="container-fluid mt-3">
-                    <form onSubmit={form.onSubmit((values) => console.log(values))}>
+                    <form onSubmit={form.onSubmit(loginBtn)}>
                         <TextInput
                             label="Email"
                             placeholder="your@email.com"
@@ -41,7 +51,7 @@ const Login = () => {
                             radius="md"
                         />
                         <Group position="center" className='mt-4'>
-                            <Button type="submit" radius="md">Submit</Button>
+                            <Button type="submit" radius="md" >Submit</Button>
                         </Group>
                     </form>
                 </div>

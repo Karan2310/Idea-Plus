@@ -3,11 +3,11 @@ import Auth from './Auth/Auth'
 import Page from './Pages/Page'
 import { BrowserRouter } from 'react-router-dom'
 
-const LandingPage = ({ isLoggedIn }) => {
+const LandingPage = ({ isLoggedIn, currentUser, handleLogin }) => {
     return (
         <>
             <BrowserRouter>
-                {isLoggedIn ? <Page /> : <Auth />}
+                {isLoggedIn ? <Page currentUser={currentUser} /> : <Auth currentUser={currentUser} handleLogin={handleLogin} />}
             </BrowserRouter>
         </>
     )

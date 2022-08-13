@@ -2,9 +2,12 @@ import React from 'react'
 import { TextInput, Button, Group, PasswordInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { NavLink } from 'react-router-dom';
+import { register } from '../../firebase';
 import './Register.css'
+import { useState } from 'react';
 
-const Register = () => {
+const Register = ({ currentUser, handleLogin }) => {
+    const [isLoading, setIsLoading] = useState(false)
     const form = useForm({
         initialValues: {
             email: '',
@@ -20,6 +23,19 @@ const Register = () => {
         },
     });
 
+    const onSubmit = (values) => {
+        setIsLoading(true)
+        register(values.email, values.password)
+            .then(() => {
+                alert('Registered successfully');
+                setIsLoading(false)
+            }).catch((error) => {
+                alert(error);
+                setIsLoading(false)
+            }
+            );
+    }
+
     return (
         <div className='Register d-flex align-items-center justify-content-between p-3'>
             <p className='register_link'>Back to
@@ -30,7 +46,7 @@ const Register = () => {
             <div className="container">
                 <h3 className='text-center'>Register with Idea<span>Plus+</span></h3>
                 <div className="container-fluid mt-4">
-                    <form onSubmit={form.onSubmit((values) => console.log(values))}>
+                    <form onSubmit={form.onSubmit((values) => onSubmit(values))}>
                         <TextInput
                             label="Email"
                             placeholder="your@email.com"
@@ -52,7 +68,7 @@ const Register = () => {
                         />
 
                         <Group position="center" className='mt-4'>
-                            <Button type="submit" radius="md">Register</Button>
+                            <Button disabled={isLoading} type="submit" radius="md">Register</Button>
                         </Group>
                     </form>
                 </div>
