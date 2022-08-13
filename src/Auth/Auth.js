@@ -7,8 +7,8 @@ const Auth = ({ currentUser, handleLogin }) => {
     return (
         <>
             <Routes>
-                <Route index path='/' element={<Login handleLogin={handleLogin} />} />
-                <Route path='/register' element={<Register currentUser={currentUser} handleLogin={handleLogin} />} />
+                <Route index path='/' element={<Login handleLogin={handleLogin} />} currentUser={currentUser} />
+                <Route path='/register' element={<Register handleLogin={handleLogin} />} />
             </Routes>
         </>
     )

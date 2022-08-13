@@ -2,23 +2,27 @@ import React, { useState } from 'react'
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 import { ScrollArea } from '@mantine/core';
 import { useEffect } from 'react';
-import { API } from '../../../cred';
+
+import { getDatabase, ref, onValue } from "firebase/database";
+
+
 
 const Home = () => {
     const [ideas, setIdeas] = useState();
     const [loading, setLoading] = useState(true);
+
     useEffect(() => {
-        fetch(`${API}/all_ideas.json`)
-            .then(response => response.json())
-            .then(data => {
-                data = Object.values(data);
-                setIdeas(data)
-                setLoading(false)
-            }
-            )
-            .catch(
-                error => console.log(error)
-            )
+
+        const db = getDatabase();
+        const postsRef = ref(db, 'all_ideas');
+
+        onValue(postsRef, (snapshot) => {
+            let data = snapshot.val();
+            console.log(data);
+            data = Object.values(data);
+            setIdeas(data)
+            setLoading(false)
+        });
     }, [])
 
     return (

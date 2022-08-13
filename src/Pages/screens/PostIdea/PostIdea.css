@@ -1,7 +1,7 @@
 .post {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
     background-color: #fff;
     border-radius: 50%;
     height: 60px;
@@ -11,6 +11,9 @@
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--primary-color);
 }
 
 .post:hover {

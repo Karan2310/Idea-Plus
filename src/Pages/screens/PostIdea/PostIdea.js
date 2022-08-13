@@ -20,7 +20,15 @@ const PostIdea = () => {
         },
     });
 
+    const hasAllValues = () =>
+        Object.values(form.values).every((value, __, _) => value !== void (0) && value !== "" && value !== null)
+
     const handleSubmit = async (e) => {
+
+        if (!hasAllValues()) {
+            alert("All fields are required")
+            return;
+        }
         e.preventDefault();
         const res = await fetch(`${API}/all_ideas.json`,
             {
@@ -33,10 +41,14 @@ const PostIdea = () => {
         )
         if (res) {
             alert("Idea posted successfully")
-            form.values = form.initialValues
+            setOpened(false);
         } else {
             alert("Error")
         }
+
+        form.reset();
+
+
     }
     return (
         <>

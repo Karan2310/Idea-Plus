@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { login } from '../../firebase';
 import './Login.css'
 
-const Login = ({ handleLogin }) => {
+const Login = ({ handleLogin, currentUser }) => {
     const form = useForm({
         initialValues: {
             email: '',
@@ -23,7 +23,7 @@ const Login = ({ handleLogin }) => {
             await login(form.values.email, form.values.password);
             handleLogin();
         } catch (error) {
-            alert(error)
+            console.log(error);
         }
     }
 

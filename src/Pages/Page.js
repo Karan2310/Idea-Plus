@@ -12,7 +12,8 @@ const Page = ({ currentUser, handleLogin }) => {
         try {
             await logout();
             handleLogin();
-            console.log(logout);
+            localStorage.removeItem('ISLOGGEDIN');
+            localStorage.removeItem('USER');
         }
         catch (error) {
             alert(error)
