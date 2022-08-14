@@ -26,7 +26,7 @@ const Page = ({ currentUser, handleLogin }) => {
                 <Navbar currentUser={currentUser} handleLogout={handleLogout} />
                 <PostIdea />
                 <Routes>
-                    <Route path='/' element={<Home />} />
+                    <Route path='/' element={<Home currentUser={currentUser} />} />
                 </Routes>
             </div>
         </>

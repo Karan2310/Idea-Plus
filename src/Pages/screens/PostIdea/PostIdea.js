@@ -6,10 +6,12 @@ import { useForm } from '@mantine/form';
 import { TextInput, Button, Textarea } from '@mantine/core';
 import { API } from '../../../cred';
 
+
+
 const PostIdea = () => {
     const [opened, setOpened] = useState(false);
     const form = useForm({
-        initialValues: { topic: '', email: '', idea: "", mindmap_url: "", likes: 0, rating: 0 },
+        initialValues: { topic: '', email: '', idea: "", mindmap_url: "", likes: 0 },
 
         // functions will be used to validate values at corresponding key
         validate: {
@@ -36,7 +38,7 @@ const PostIdea = () => {
                 Headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(form.values),
+                body: JSON.stringify({ ...form.values, ratings: [] }),
             }
         )
         if (res) {
@@ -45,10 +47,7 @@ const PostIdea = () => {
         } else {
             alert("Error")
         }
-
         form.reset();
-
-
     }
     return (
         <>
